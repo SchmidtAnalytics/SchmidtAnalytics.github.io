@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://schmidtanalytics.github.io/sitemap.xml
