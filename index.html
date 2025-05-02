@@ -1,424 +1,143 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <meta http-equiv="Cache-control" content="public">
-  <meta property="og:title" content="Schmidt Analytics - Uw partner in een datagedreven wereld" />
-  <meta property="og:description" content="Gespecialiseerd in data-analyse, Power BI, Microsoft Fabric en maatwerkoplossingen. Wij helpen organisaties om datagedreven te werken." />
-  <meta property="og:image" content="https://schmidtanalytics.github.io/Logo.png.png" />
-  <meta property="og:url" content="https://schmidtanalytics.github.io" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-oAet3x0FD2+iqMkH5RhvqapTc7FqvLEqkqIx7dKmlpOzzvwMZOb4C5H7rZpL3IoTGb7iEk0In60SBILU8klTig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <meta name="description" content="Schmidt Analytics is uw partner in een datagedreven wereld. Gespecialiseerd in data-analyse, data-engineering, Microsoft Fabric, Power BI en op maat gemaakte oplossingen.">
-  <meta name="keywords" content="data, datagedreven, datadriven, Schmidt Analytics, data engineering, data analytics, Microsoft Fabric, Power BI">
-  <meta name="author" content="Schmidt Analytics">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Schmidt Analytics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    h1, h2, h3, h4, h5, h6, .section h2 {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease-in-out;
-    }
-
-    h1.visible, h2.visible, h3.visible, h4.visible, h5.visible, h6.visible, .section h2.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    button {
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    button:hover {
-      background-color: var(--primary);
-      transform: scale(1.03);
-    }
     :root {
       --primary: #002F9C;
       --accent: #D00000;
       --support: #65A9A4;
-      --bg: #f9f9f9;
+      --bg: #F9F9F9;
       --text: #222;
     }
 
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
-  font-family: 'Lato', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: var(--bg);
-  color: var(--text);
-}
+      font-family: 'Lato', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+    }
 
     header {
       background-color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-bottom: 2px solid var(--support);
-    }
-
-    header img {
-      height: 50px;
-    }
-
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    .lang-toggle {
-      cursor: pointer;
-      font-weight: bold;
-      color: var(--accent);
-    }
-
-    .hero {
-      padding: 4rem 2rem;
+      padding: 1rem;
+      border-bottom: 3px solid var(--support);
       text-align: center;
     }
 
-    .hero h1 {
-      color: var(--primary);
-      font-size: 2rem;
+    header img {
+      height: 60px;
     }
 
-    .section {
-      padding: 2rem;
+    section {
+      padding: 2rem 1rem;
       max-width: 1000px;
       margin: 0 auto;
     }
 
-    .section h2 {
+    h1, h2 {
       color: var(--primary);
     }
 
-    footer {
-      background: #eee;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #666;
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
 
-    form input, form textarea {
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 0.5rem 0.5rem 0.5rem 2.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-position: 10px center;
-  background-repeat: no-repeat;
-  background-size: 16px 16px;
-  transition: border-color 0.3s;
-}
-
-    form button {
+    .cta-button {
       background-color: var(--accent);
       color: white;
       border: none;
-      padding: 0.75rem 1.5rem;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border-radius: 30px;
       cursor: pointer;
-      border-radius: 4px;
+      margin-top: 1.5rem;
+      transition: background-color 0.3s ease;
     }
 
-    .form-success {
-      color: green;
-      margin-top: 1rem;
-      display: none;
+    .cta-button:hover {
+      background-color: var(--primary);
+    }
+
+    footer {
+      background-color: #eee;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
     }
 
     @media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+      h1 {
+        font-size: 1.5rem;
+      }
 
-  nav {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+      .cta-button {
+        width: 100%;
+        padding: 1rem;
+      }
 
-  nav a, .lang-toggle {
-    display: block;
-    margin: 0.5rem 0;
-    padding-left: 0;
-  }
-
-  form input, form textarea, form button {
-    font-size: 1rem;
-  }
-
-  button {
-    width: 100%;
-  }
-}
+      section {
+        padding: 1.5rem 1rem;
+      }
     }
-  input[name="name"] {
-  background-image: url('https://img.icons8.com/ios-filled/50/000000/user.png');
-}
-
-input[name="email"] {
-  background-image: url('https://img.icons8.com/ios-filled/50/000000/email.png');
-}
-
-input[name="ctaName"] {
-  background-image: url('https://img.icons8.com/ios-filled/50/000000/user.png');
-}
-
-input[name="ctaPhone"] {
-  background-image: url('https://img.icons8.com/ios-filled/50/000000/phone.png');
-}
-
-input[name="ctaEmail"] {
-  background-image: url('https://img.icons8.com/ios-filled/50/000000/email.png');
-}
-
-form input:focus, form textarea:focus {
-  outline: none;
-  border-color: var(--support);
-  box-shadow: 0 0 0 2px rgba(101, 169, 164, 0.3);
-}
-</style>
+  </style>
 </head>
 <body>
+
   <header>
-    <img src="/SchmidtAnalytics.github.io/Logo.png.png" alt="Schmidt Analytics logo" loading="lazy">
-    <nav>
-      <a href="#cta" class="cta-link" style="background-color: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 5px; margin-left: 1rem;">Vrijblijvend contact</a>
+    <img src="https://schmidtanalytics.github.io/Logo.png.png" alt="Schmidt Analytics logo" />
   </header>
 
-  <section class="hero" data-aos="fade-up">
-    <h1 data-nl="Uw partner in een datagedreven wereld" data-en="Your partner in a data-driven world">Uw partner in een datagedreven wereld</h1>
-
-  <hr style="border: none; border-top: 2px solid var(--support); width: 80%; margin: 3rem auto; opacity: 0; transform: translateY(20px); transition: all 0.6s ease;" class="animated-divider">
-  <section class="section" id="testimonials" data-aos="fade-up">
-    <h2 data-nl="Wat anderen zeggen" data-en="What others say">Wat anderen zeggen</h2>
-    <blockquote>
-      <p data-nl="Schmidt Analytics hielp ons snel inzicht te krijgen in onze data. Dankzij hun maatwerkrapportages kunnen we nu beter sturen op prestaties."
-         data-en="Schmidt Analytics helped us quickly gain insights from our data. Their custom reports allow us to steer better on performance.">
-        Schmidt Analytics hielp ons snel inzicht te krijgen in onze data. Dankzij hun maatwerkrapportages kunnen we nu beter sturen op prestaties.
-      </p>
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Philips_logo_new.svg/120px-Philips_logo_new.svg.png" alt="Philips logo" style="height: 30px;" loading="lazy">
-        <cite>- Peter de Vries, Operationeel Manager bij Philips</cite>
-      </div>
-    </blockquote>
-    <blockquote>
-      <p data-nl="Professioneel, snel en effectief. De Power BI dashboards die ze opleverden zijn dagelijks in gebruik door ons management."
-         data-en="Professional, fast and effective. The Power BI dashboards they delivered are used daily by our management.">
-        Professioneel, snel en effectief. De Power BI dashboards die ze opleverden zijn dagelijks in gebruik door ons management.
-      </p>
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/ABN_AMRO_Logo.svg/120px-ABN_AMRO_Logo.svg.png" alt="ABN AMRO logo" style="height: 30px;">
-        <cite>- Saskia Jansen, Data Lead bij ABN AMRO</cite>
-      </div>
-    </blockquote>
-  </section>
-
-  <section class="section" id="services" data-aos="fade-up">
-    <p data-nl="Onze diensten helpen organisaties hun data beter te benutten voor besluitvorming en strategie."
-       data-en="Our services help organizations better leverage their data for decision-making and strategy.">
-      Onze diensten helpen organisaties hun data beter te benutten voor besluitvorming en strategie.
+  <section id="home">
+    <h1>Uw partner in een datagedreven wereld</h1>
+    <p>
+      Schmidt Analytics is gespecialiseerd in data-analyse, data engineering, Power BI-ontwikkeling en advies. Wij bouwen oplossingen vanuit de vraag – niet vanuit de techniek.
     </p>
-    <h2 data-nl="Diensten" data-en="Services">Diensten</h2>
-    <ul style="list-style: none; padding-left: 0;">
-  <li><i class="fas fa-chart-line"></i> 
-      <li data-nl="Data-analyse" data-en="Data Analysis">Data-analyse</li>
-      </li>
-  <li><i class="fas fa-cogs"></i> Data-engineering</li>
-      </li>
-  <li><i class="fas fa-chart-pie"></i> Power BI-ontwikkeling</li>
-      </li>
-  <li><i class="fas fa-puzzle-piece"></i> Maatwerkoplossingen</li>
-      </li>
-  <li><i class="fas fa-lightbulb"></i> Advisering & Strategie</li>
-    </li>
-</ul>
+    <a href="#contact"><button class="cta-button">Neem contact op</button></a>
   </section>
 
-  <section class="section" id="about" data-aos="fade-up">
-    <h2 data-nl="Over Schmidt Analytics" data-en="About Schmidt Analytics">Over Schmidt Analytics</h2>
-    <p data-nl="Wij zijn data analisten en engineers gericht op het creëren van de juiste oplossingen voor de vraag. De vraag staat daarin centraal, niet de techniek."
-       data-en="We are data analysts and engineers focused on creating the right solutions based on the questions. The questions are central, not the technology.">
-      Wij zijn data analisten en engineers gericht op het creëren van de juiste oplossingen voor de vraag. De vraag staat daarin centraal, niet de techniek.
+  <section id="diensten">
+    <h2>Diensten</h2>
+    <ul>
+      <li><strong>Data-analyse</strong>: inzichten uit data halen om beter te sturen.</li>
+      <li><strong>Data-engineering</strong>: betrouwbare infrastructuur en dataverwerking opzetten.</li>
+      <li><strong>Power BI-ontwikkeling</strong>: dashboards en rapportages op maat.</li>
+      <li><strong>Microsoft Fabric</strong>: moderne, schaalbare dataplatformoplossingen.</li>
+      <li><strong>Advies & Strategie</strong>: begeleiding naar een datagedreven organisatie.</li>
+    </ul>
+  </section>
+
+  <section id="over-ons">
+    <h2>Over ons</h2>
+    <p>
+      Wij zijn een team van data-experts met passie voor eenvoud en effectiviteit. Onze aanpak is pragmatisch: we beginnen bij uw vraag en bouwen van daaruit een passende oplossing. Ons doel is om organisaties écht datagedreven te laten werken.
     </p>
   </section>
 
-  <section class="section" id="contact" data-aos="fade-up">
-    <h2 data-nl="Contact" data-en="Contact">Contact</h2>
-    <form id="contactForm" style="display: flex; flex-direction: column;">
-      <input type="text" name="name" placeholder="Naam / Name" required>
-      <input type="email" name="email" placeholder="E-mail" required>
-      <textarea name="message" rows="5" placeholder="Uw bericht / Your message" required></textarea>
-      <button type="submit" style="background-color: var(--support); border: none; padding: 0.75rem; color: white; font-weight: bold; border-radius: 6px; cursor: pointer;">Verstuur / Send</button>
-    </form>
-    <div class="form-success" id="formSuccess">Bedankt voor uw bericht! / Thank you for your message!</div>
-  </section>
-
-  <section class="section" id="cta" data-aos="fade-up">
-    <h3 data-nl="Gratis en vrijblijvend" data-en="Free and without obligation">Gratis en vrijblijvend</h3>
-    <p data-nl="Wij nemen contact op om samen te kijken wat we voor uw organisatie kunnen betekenen."
-       data-en="We will contact you to explore what we can do for your organization.">
-      Wij nemen contact op om samen te kijken wat we voor uw organisatie kunnen betekenen.
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      Interesse in een samenwerking of vrijblijvend advies? Stuur ons een bericht via <a href="mailto:info@schmidt-analytics.nl">info@schmidt-analytics.nl</a>.
     </p>
-    <h2 data-nl="Laat uw gegevens achter" data-en="Leave your details">Laat uw gegevens achter</h2>
-    <p data-nl="Laat uw naam, telefoonnummer en/of e-mailadres achter en wij nemen contact met u op."
-       data-en="Leave your name, phone number and/or email address and we will contact you.">
-       Laat uw naam, telefoonnummer en/of e-mailadres achter en wij nemen contact met u op.
-    </p>
-    <form id="ctaForm" style="display: flex; flex-direction: column;">
-      <input type="text" name="ctaName" placeholder="Naam / Name" required>
-      <input type="tel" name="ctaPhone" placeholder="Telefoonnummer / Phone">
-      <input type="email" name="ctaEmail" placeholder="E-mailadres / Email" required>
-      <p style="font-size: 0.9rem; color: #555;">
-        Door dit formulier in te vullen geeft u toestemming aan Schmidt Analytics om contact met u op te nemen. Uw gegevens worden na contact verwijderd.
-      </p>
-      <button type="submit" style="background-color: var(--support); border: none; padding: 0.75rem; color: white; font-weight: bold; border-radius: 6px; cursor: pointer;">Verstuur / Send</button>
-    </form>
-    <div class="form-success" id="ctaSuccess">Uw aanvraag is ontvangen! / Your request has been received!</div>
   </section>
-
-  
 
   <footer>
-    &copy; 2025 Schmidt Analytics
+    &copy; 2025 Schmidt Analytics — info@schmidt-analytics.nl
   </footer>
-
-  <script defer>
-    function toggleLanguage() {
-      const currentLang = document.querySelector('.lang-toggle').innerText;
-      const newLang = currentLang === 'EN' ? 'NL' : 'EN';
-      document.querySelector('.lang-toggle').innerText = newLang;
-
-      document.querySelectorAll('[data-nl]').forEach(el => {
-        el.innerText = newLang === 'EN' ? el.getAttribute('data-en') : el.getAttribute('data-nl');
-      });
-    }
-
-    // Simulated backend contact form submission
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      // Here you would send data to a backend with fetch/AJAX
-      document.getElementById('formSuccess').style.display = 'block';
-      this.reset();
-    });
-      // CTA form simulated backend submission
-    document.getElementById('ctaForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const name = this.ctaName.value;
-      const phone = this.ctaPhone.value;
-      const email = this.ctaEmail.value;
-
-      const body = `Naam: ${name}%0D%0ATelefoon: ${phone}%0D%0AEmail: ${email}`;
-
-      // Simulated email send via mailto:
-      window.location.href = `mailto:info@schmidt-analytics.nl?subject=Nieuwe contactaanvraag&body=${body}`;
-
-      document.getElementById('ctaSuccess').style.display = 'block';
-      this.reset();
-    });
-  </script>
-<script>
-  document.querySelectorAll('.animated-divider').forEach(divider => {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
-
-    observer.observe(divider);
-  });
-
-  // Animate headers on scroll
-  document.querySelectorAll('h1, h2, h3, h4, h5, h6, .section h2').forEach(el => {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    observer.observe(el);
-  });
-
-  // Animate dividers
-  document.querySelectorAll('.animated-divider').forEach(divider => {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
-
-    observer.observe(divider);
-  });
-
-  AOS.init();
-</script>
-<button id="ctaStickyButton" style="position: fixed; bottom: 20px; right: 20px; background-color: var(--support); color: white; border: none; padding: 1rem 1.5rem; border-radius: 50px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); cursor: pointer; z-index: 999;">
-  Neem contact op
-</button>
-
-<div id="ctaModal" style="display:none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; font-family: 'Lato', sans-serif;">
-  <div style="background: #ffffff; padding: 2rem; border-radius: 16px; max-width: 420px; width: 90%; position: relative; box-shadow: 0 8px 20px rgba(0,0,0,0.2); border: 2px solid var(--support);">
-    <button onclick="document.getElementById('ctaModal').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 1.2rem; cursor: pointer;">&times;</button>
-    <h3 data-nl="Gratis en vrijblijvend" data-en="Free and without obligation">Gratis en vrijblijvend</h3>
-    <form id="ctaFormModal" style="display: flex; flex-direction: column;">
-      <input type="text" name="ctaName" placeholder="Naam / Name" required>
-      <input type="tel" name="ctaPhone" placeholder="Telefoonnummer / Phone">
-      <input type="email" name="ctaEmail" placeholder="E-mailadres / Email" required>
-      <p style="font-size: 0.9rem; color: #555;">
-        Door dit formulier in te vullen geeft u toestemming aan Schmidt Analytics om contact met u op te nemen. Uw gegevens worden na contact verwijderd.
-      </p>
-      <button type="submit">Verstuur / Send</button>
-    </form>
-    <div class="form-success" id="ctaSuccessModal">Uw aanvraag is ontvangen! / Your request has been received!</div>
-  </div>
-</div>
-
-<script>
-  document.getElementById('ctaStickyButton').addEventListener('click', function() {
-    document.getElementById('ctaModal').style.display = 'flex';
-  });
-
-  document.getElementById('ctaFormModal').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const name = this.ctaName.value;
-    const phone = this.ctaPhone.value;
-    const email = this.ctaEmail.value;
-
-    const body = `Naam: ${name}%0D%0ATelefoon: ${phone}%0D%0AEmail: ${email}`;
-
-    window.location.href = `mailto:info@schmidt-analytics.nl?subject=Nieuwe contactaanvraag&body=${body}`;
-
-    document.getElementById('ctaSuccessModal').style.display = 'block';
-    this.reset();
-  });
-</script>
 
 </body>
 </html>
+
 
 
 
