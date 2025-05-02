@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+  <meta property="og:title" content="Schmidt Analytics - Uw partner in een datagedreven wereld" />
+  <meta property="og:description" content="Gespecialiseerd in data-analyse, Power BI, Microsoft Fabric en maatwerkoplossingen. Wij helpen organisaties om datagedreven te werken." />
+  <meta property="og:image" content="https://schmidtanalytics.github.io/Logo.png.png" />
+  <meta property="og:url" content="https://schmidtanalytics.github.io" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-oAet3x0FD2+iqMkH5RhvqapTc7FqvLEqkqIx7dKmlpOzzvwMZOb4C5H7rZpL3IoTGb7iEk0In60SBILU8klTig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -139,12 +144,8 @@
 <body>
   <header>
     <img src="/SchmidtAnalytics.github.io/Logo.png.png" alt="Schmidt Analytics logo">
-    <nav>
-      <a href="#services">Diensten</a>
-      <a href="#about">Over</a>
-      <a href="#contact">Contact</a>
-      <span class="lang-toggle" onclick="toggleLanguage()">EN</span>
-    </nav>
+    <nav>$1
+      <a href="#cta" class="cta-link" style="background-color: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 5px; margin-left: 1rem;">Vrijblijvend contact</a>
   </header>
 
   <section class="hero" data-aos="fade-up">
@@ -152,6 +153,10 @@
   </section>
 
   <section class="section" id="services" data-aos="fade-up">
+    <p data-nl="Onze diensten helpen organisaties hun data beter te benutten voor besluitvorming en strategie."
+       data-en="Our services help organizations better leverage their data for decision-making and strategy.">
+      Onze diensten helpen organisaties hun data beter te benutten voor besluitvorming en strategie.
+    </p>
     <h2 data-nl="Diensten" data-en="Services">Diensten</h2>
     <ul style="list-style: none; padding-left: 0;">
   <li><i class="fas fa-chart-line"></i> 
@@ -188,6 +193,11 @@
   </section>
 
   <section class="section" id="cta" data-aos="fade-up">
+    <h3 data-nl="Gratis en vrijblijvend" data-en="Free and without obligation">Gratis en vrijblijvend</h3>
+    <p data-nl="Wij nemen contact op om samen te kijken wat we voor uw organisatie kunnen betekenen."
+       data-en="We will contact you to explore what we can do for your organization.">
+      Wij nemen contact op om samen te kijken wat we voor uw organisatie kunnen betekenen.
+    </p>
     <h2 data-nl="Laat uw gegevens achter" data-en="Leave your details">Laat uw gegevens achter</h2>
     <p data-nl="Laat uw naam, telefoonnummer en/of e-mailadres achter en wij nemen contact met u op."
        data-en="Leave your name, phone number and/or email address and we will contact you.">
@@ -203,6 +213,30 @@
       <button type="submit">Verstuur / Send</button>
     </form>
     <div class="form-success" id="ctaSuccess">Uw aanvraag is ontvangen! / Your request has been received!</div>
+  </section>
+
+  <section class="section" id="testimonials" data-aos="fade-up">
+    <h2 data-nl="Wat anderen zeggen" data-en="What others say">Wat anderen zeggen</h2>
+    <blockquote>
+  <p data-nl="Schmidt Analytics hielp ons snel inzicht te krijgen in onze data. Dankzij hun maatwerkrapportages kunnen we nu beter sturen op prestaties."
+     data-en="Schmidt Analytics helped us quickly gain insights from our data. Their custom reports allow us to steer better on performance.">
+    Schmidt Analytics hielp ons snel inzicht te krijgen in onze data. Dankzij hun maatwerkrapportages kunnen we nu beter sturen op prestaties.
+  </p>
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Philips_logo_new.svg/120px-Philips_logo_new.svg.png" alt="Philips logo" style="height: 30px;">
+    <cite>- Peter de Vries, Operationeel Manager bij Philips</cite>
+  </div>
+</blockquote>
+    <blockquote>
+  <p data-nl="Professioneel, snel en effectief. De Power BI dashboards die ze opleverden zijn dagelijks in gebruik door ons management."
+     data-en="Professional, fast and effective. The Power BI dashboards they delivered are used daily by our management.">
+    Professioneel, snel en effectief. De Power BI dashboards die ze opleverden zijn dagelijks in gebruik door ons management.
+  </p>
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/ABN_AMRO_Logo.svg/120px-ABN_AMRO_Logo.svg.png" alt="ABN AMRO logo" style="height: 30px;">
+    <cite>- Saskia Jansen, Data Lead bij ABN AMRO</cite>
+  </div>
+</blockquote>
   </section>
 
   <footer>
@@ -249,4 +283,5 @@
 </script>
 </body>
 </html>
+
 
