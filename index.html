@@ -1,146 +1,252 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-oAet3x0FD2+iqMkH5RhvqapTc7FqvLEqkqIx7dKmlpOzzvwMZOb4C5H7rZpL3IoTGb7iEk0In60SBILU8klTig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <meta name="description" content="Schmidt Analytics is uw partner in een datagedreven wereld. Gespecialiseerd in data-analyse, data-engineering, Microsoft Fabric, Power BI en op maat gemaakte oplossingen.">
+  <meta name="keywords" content="data, datagedreven, datadriven, Schmidt Analytics, data engineering, data analytics, Microsoft Fabric, Power BI">
+  <meta name="author" content="Schmidt Analytics">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Schmidt Analytics</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Darker+Grotesque&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #002F9C;
+      --accent: #D00000;
+      --support: #65A9A4;
+      --bg: #f9f9f9;
+      --text: #222;
+    }
+
     body {
-      font-family: 'Darker Grotesque', sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-    header, section, footer {
-      padding: 20px;
-    }
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
     header {
-      background-color: #f4f4f4;
-      text-align: center;
-    }
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      color: #000099;
-    }
-    .cta-button {
-      background-color: #0073e6;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    .services, .cases, .contact, .trust {
-      background-color: #fafafa;
-      margin-top: 10px;
-    }
-    .service, .case, .testimonial {
-      margin-bottom: 20px;
-    }
-    .analytics {
-      font-family: 'Darker Grotesque', sans-serif;
-      color: #CC0000;
-      font-size: 24px;
-    }
-    footer {
-      text-align: center;
-      background-color: #eee;
-    }
-    .logo {
-      max-width: 200px;
-      margin: 10px auto;
-    }
-    .whatsapp-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: white;
-      padding: 12px 16px;
-      border-radius: 50px;
-      font-size: 18px;
-      text-decoration: none;
+      background-color: white;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
+      padding: 1rem 2rem;
+      border-bottom: 2px solid var(--support);
     }
-    .whatsapp-button img {
-      width: 24px;
-      height: 24px;
-      margin-right: 8px;
+
+    header img {
+      height: 50px;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .lang-toggle {
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      color: var(--primary);
+      font-size: 2rem;
+    }
+
+    .section {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      color: var(--primary);
+    }
+
+    footer {
+      background: #eee;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    form button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .form-success {
+      color: green;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav a, .lang-toggle {
+    display: block;
+    margin: 0.5rem 0;
+    padding-left: 0;
+  }
+
+  form input, form textarea, form button {
+    font-size: 1rem;
+  }
+
+  button {
+    width: 100%;
+  }
+}
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://raw.githubusercontent.com/SchmidtAnalytics
-SchmidtAnalytics.github.io/main/Logo.png.png" alt="Schmidt Analytics logo" class="logo">
-    <h1>Wij helpen B2B-bedrijven betere beslissingen nemen met slimme data-analyse</h1>
-    <a href="#contact" class="cta-button">Plan een gratis consult</a>
+    <img src="/SchmidtAnalytics.github.io/Logo.png.png" alt="Schmidt Analytics logo">
+    <nav>
+      <a href="#services">Diensten</a>
+      <a href="#about">Over</a>
+      <a href="#contact">Contact</a>
+      <span class="lang-toggle" onclick="toggleLanguage()">EN</span>
+    </nav>
   </header>
 
-  <section class="services">
-    <h2>Onze diensten</h2>
-    <div class="service">
-      <h3>Data-analyse op maat</h3>
-      <p>Inzicht in verborgen verbanden en trends die jouw organisatie vooruithelpen.</p>
-    </div>
-    <div class="service">
-      <h3>Dashboarding & visualisatie</h3>
-      <p>Realtime inzicht in je KPI’s, op een visuele en begrijpelijke manier.</p>
-    </div>
-    <div class="service">
-      <h3>Data-automatisering</h3>
-      <p>Minder handwerk, meer grip, en structurele tijdswinst.</p>
-    </div>
-    <div class="service">
-      <h3>Advies & strategie</h3>
-      <p>Van datavraagstuk naar heldere roadmap op maat.</p>
-    </div>
+  <section class="hero" data-aos="fade-up">
+    <h1 data-nl="Uw partner in een datagedreven wereld" data-en="Your partner in a data-driven world">Uw partner in een datagedreven wereld</h1>
   </section>
 
-  <section class="target-audience">
-    <h2>Voor wie wij werken</h2>
-    <p>Wij zijn actief in sectoren als logistiek, retail, productie en finance.</p>
-    <p><strong>Klantervaring:</strong> “Fijn dat er wordt meegedacht vanuit onze business!” – Klant X</p>
+  <section class="section" id="services" data-aos="fade-up">
+    <h2 data-nl="Diensten" data-en="Services">Diensten</h2>
+    <ul style="list-style: none; padding-left: 0;">
+  <li><i class="fas fa-chart-line"></i> 
+      <li data-nl="Data-analyse" data-en="Data Analysis">Data-analyse</li>
+      </li>
+  <li><i class="fas fa-cogs"></i> Data-engineering</li>
+      </li>
+  <li><i class="fas fa-chart-pie"></i> Power BI-ontwikkeling</li>
+      </li>
+  <li><i class="fas fa-puzzle-piece"></i> Maatwerkoplossingen</li>
+      </li>
+  <li><i class="fas fa-lightbulb"></i> Advisering & Strategie</li>
+    </li>
+</ul>
   </section>
 
-  <section class="cases">
-    <h2>Voorbeelden uit de praktijk</h2>
-    <div class="case">
-      <h3>Logistiek</h3>
-      <p>Hoe wij een logistiek bedrijf hielpen 15% te besparen via voorraadoptimalisatie.</p>
-    </div>
-    <div class="case">
-      <h3>Onderwijs</h3>
-      <p>Hoe een onderwijsinstelling dankzij dashboarding realtime inzicht kreeg in leerlingenstromen.</p>
-    </div>
+  <section class="section" id="about" data-aos="fade-up">
+    <h2 data-nl="Over Schmidt Analytics" data-en="About Schmidt Analytics">Over Schmidt Analytics</h2>
+    <p data-nl="Wij zijn data analisten en engineers gericht op het creëren van de juiste oplossingen voor de vraag. De vraag staat daarin centraal, niet de techniek."
+       data-en="We are data analysts and engineers focused on creating the right solutions based on the questions. The questions are central, not the technology.">
+      Wij zijn data analisten en engineers gericht op het creëren van de juiste oplossingen voor de vraag. De vraag staat daarin centraal, niet de techniek.
+    </p>
   </section>
 
-  <section id="contact" class="contact">
-    <h2>Neem contact op</h2>
-    <p>We denken graag met je mee. Bel ons, mail ons of plan direct een afspraak in.</p>
-    <p><strong>Email:</strong> info@jouwdatanbedrijf.nl</p>
-    <p><strong>Telefoon:</strong> 06-12345678</p>
-    <a href="https://calendly.com/jouwdatanbedrijf" class="cta-button">Plan een afspraak</a>
+  <section class="section" id="contact" data-aos="fade-up">
+    <h2 data-nl="Contact" data-en="Contact">Contact</h2>
+    <form id="contactForm">
+      <input type="text" name="name" placeholder="Naam / Name" required>
+      <input type="email" name="email" placeholder="E-mail" required>
+      <textarea name="message" rows="5" placeholder="Uw bericht / Your message" required></textarea>
+      <button type="submit">Verstuur / Send</button>
+    </form>
+    <div class="form-success" id="formSuccess">Bedankt voor uw bericht! / Thank you for your message!</div>
   </section>
 
-  <section class="trust">
-    <h2>Waarom klanten voor ons kiezen</h2>
-    <div class="testimonial">
-      <p>“We hadden in no-time inzicht in onze processen – aanrader!”</p>
-    </div>
-    <p>Partner van Microsoft, gecertificeerd in Power BI & Google Analytics.</p>
-    <p>Opgericht door [Jouw Naam], met jarenlange ervaring in data en bedrijfsadvies.</p>
+  <section class="section" id="cta" data-aos="fade-up">
+    <h2 data-nl="Laat uw gegevens achter" data-en="Leave your details">Laat uw gegevens achter</h2>
+    <p data-nl="Laat uw naam, telefoonnummer en/of e-mailadres achter en wij nemen contact met u op."
+       data-en="Leave your name, phone number and/or email address and we will contact you.">
+       Laat uw naam, telefoonnummer en/of e-mailadres achter en wij nemen contact met u op.
+    </p>
+    <form id="ctaForm">
+      <input type="text" name="ctaName" placeholder="Naam / Name" required>
+      <input type="tel" name="ctaPhone" placeholder="Telefoonnummer / Phone">
+      <input type="email" name="ctaEmail" placeholder="E-mailadres / Email" required>
+      <p style="font-size: 0.9rem; color: #555;">
+        Door dit formulier in te vullen geeft u toestemming aan Schmidt Analytics om contact met u op te nemen. Uw gegevens worden na contact verwijderd.
+      </p>
+      <button type="submit">Verstuur / Send</button>
+    </form>
+    <div class="form-success" id="ctaSuccess">Uw aanvraag is ontvangen! / Your request has been received!</div>
   </section>
 
   <footer>
-    <p>&copy; 2025 Schmidt Analytics. Alle rechten voorbehouden.</p>
+    &copy; 2025 Schmidt Analytics
   </footer>
 
-  <a href="https://wa.me/31624385604" class="whatsapp-button" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> Chat met ons
-  </a>
+  <script>
+    function toggleLanguage() {
+      const currentLang = document.querySelector('.lang-toggle').innerText;
+      const newLang = currentLang === 'EN' ? 'NL' : 'EN';
+      document.querySelector('.lang-toggle').innerText = newLang;
+
+      document.querySelectorAll('[data-nl]').forEach(el => {
+        el.innerText = newLang === 'EN' ? el.getAttribute('data-en') : el.getAttribute('data-nl');
+      });
+    }
+
+    // Simulated backend contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Here you would send data to a backend with fetch/AJAX
+      document.getElementById('formSuccess').style.display = 'block';
+      this.reset();
+    });
+      // CTA form simulated backend submission
+    document.getElementById('ctaForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = this.ctaName.value;
+      const phone = this.ctaPhone.value;
+      const email = this.ctaEmail.value;
+
+      const body = `Naam: ${name}%0D%0ATelefoon: ${phone}%0D%0AEmail: ${email}`;
+
+      // Simulated email send via mailto:
+      window.location.href = `mailto:info@schmidt-analytics.nl?subject=Nieuwe contactaanvraag&body=${body}`;
+
+      document.getElementById('ctaSuccess').style.display = 'block';
+      this.reset();
+    });
+  </script>
+<script>
+  AOS.init();
+</script>
 </body>
 </html>
+
