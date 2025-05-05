@@ -321,6 +321,67 @@
 .testimonial-controls button:hover {
   background-color: var(--accent);
 }
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.hero-text {
+  flex: 1 1 60%;
+}
+
+.hero-icon img {
+  max-width: 100px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.sub {
+  font-size: 1.2rem;
+  color: var(--support);
+  margin-bottom: 1rem;
+}
+
+/* Hover/microanimaties */
+.cta-button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links a {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover {
+  transform: scale(1.05);
+}
+
+ul li {
+  transition: transform 0.2s ease;
+}
+ul li:hover {
+  transform: translateX(4px);
+}
+
+/* Hero icon animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-icon {
+    align-self: center;
+  }
+}
 
   </style>
 </head>
@@ -342,12 +403,21 @@
     </div>
   </nav>
 
-  <section id="home">
-    <h1>Uw partner in een datagedreven wereld</h1>
-    <p>
-      Schmidt Analytics is gespecialiseerd in data-analyse, data engineering, Power BI-ontwikkeling en advies. Wij bouwen oplossingen vanuit de vraag – niet vanuit de techniek.
-    </p>
-  </section>
+<section id="home">
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Uw partner in een datagedreven wereld</h1>
+      <p class="sub">Datagedreven werken, zonder ruis.</p>
+      <p>
+        Schmidt Analytics is gespecialiseerd in data-analyse, data engineering, Power BI-ontwikkeling en advies. Wij bouwen oplossingen vanuit de vraag – niet vanuit de techniek.
+      </p>
+      <a href="#contact"><button class="cta-button">Neem contact op</button></a>
+    </div>
+    <div class="hero-icon">
+      <img src="https://img.icons8.com/ios-filled/100/000099/combo-chart.png" alt="Data visualisatie icoon" loading="lazy" />
+    </div>
+  </div>
+</section>
 
   <section id="testimonials">
   <h2>Wat zeggen onze partners?</h2>
