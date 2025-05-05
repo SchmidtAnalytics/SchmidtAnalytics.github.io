@@ -154,8 +154,10 @@
       .cta-fixed {
         right: 1rem;
         bottom: 1rem;
-        padding: 1rem 1.5rem;
-        font-size: 0.9rem;
+        padding: 1rem 1.6rem;
+        font-size: 1rem;
+        border-radius: 50px;
+        white-space: nowrap;
       }
 
       section {
@@ -167,6 +169,79 @@
         align-items: center;
       }
     }
+
+    /* Popup formulier */
+    .form-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 47, 156, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .form-overlay.active {
+      display: flex;
+    }
+
+    .form-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 0.8rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    form label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 30px;
+      padding: 0.6rem 1rem;
+    }
+
+    form input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 1rem;
+      padding-left: 0.5rem;
+    }
+
+    .icon {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    .privacy {
+      font-size: 0.8rem;
+      margin-top: 1rem;
+      color: #666;
+    }
   </style>
 </head>
 <body>
@@ -175,9 +250,9 @@
     <img src="https://schmidtanalytics.github.io/Logo.png" alt="Schmidt Analytics logo" />
   </header>
 
-  <nav>
+  <nav role="navigation">
     <div class="nav-container">
-      <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+      <button class="menu-toggle" aria-label="Hoofdmenu openen/sluiten" aria-expanded="false">&#9776;</button>
       <div class="nav-links" id="navLinks">
         <a href="#home">Home</a>
         <a href="#diensten">Diensten</a>
@@ -223,18 +298,62 @@
     &copy; 2025 Schmidt Analytics B.V.
   </footer>
 
-  <!-- Vaste call-to-action knop -->
-  <a href="#contact">
-    <button class="cta-button cta-fixed">Vragen? We komen graag met je in contact! </button>
-  </a>
+  <!-- CTA knop -->
+  <button class="cta-button cta-fixed" id="openFormBtn">Vragen? We komen graag met je in contact!</button>
 
-  <!-- Script voor mobiel menu -->
+  <!-- Popup formulier -->
+  <div class="form-overlay" id="formOverlay">
+    <div class="form-container">
+      <button class="close-btn" id="closeFormBtn">&times;</button>
+      <h2>Laat je gegevens achter</h2>
+      <form id="contactForm">
+        <label>
+          <span class="icon">👤</span>
+          <input type="text" name="naam" placeholder="Naam" required />
+        </label>
+        <label>
+          <span class="icon">📧</span>
+          <input type="email" name="email" placeholder="E-mailadres" required />
+        </label>
+        <label>
+          <span class="icon">📞</span>
+          <input type="tel" name="telefoon" placeholder="Telefoonnummer" required />
+        </label>
+        <button type="submit" class="cta-button">Verstuur</button>
+        <p class="privacy">Met het indienen van dit formulier geef je Schmidt Analytics B.V. toestemming om deze gegevens te verwerken.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.getElementById('navLinks');
+    const openBtn = document.getElementById('openFormBtn');
+    const closeBtn = document.getElementById('closeFormBtn');
+    const overlay = document.getElementById('formOverlay');
+    const form = document.getElementById('contactForm');
 
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+    });
+
+    openBtn.addEventListener('click', () => {
+      overlay.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      overlay.classList.remove('active');
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const naam = form.naam.value;
+      const email = form.email.value;
+      const telefoon = form.telefoon.value;
+      const mailBody = `Naam: ${naam}%0DE-mail: ${email}%0DTelefoonnummer: ${telefoon}`;
+      window.location.href = `mailto:info@schmidt-analytics.nl?subject=Contactformulier&body=${mailBody}`;
     });
   </script>
 
