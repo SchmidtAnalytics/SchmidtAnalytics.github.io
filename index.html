@@ -300,6 +300,27 @@
 .client-info strong {
   color: var(--text);
 }
+.testimonial-controls {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.testimonial-controls button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.testimonial-controls button:hover {
+  background-color: var(--accent);
+}
 
   </style>
 </head>
@@ -461,14 +482,27 @@
     });
   </script>
 <script>
+<script>
   const testimonials = document.querySelectorAll('.testimonial');
   let testimonialIndex = 0;
 
-  function showNextTestimonial() {
-    testimonials[testimonialIndex].classList.remove('active');
-    testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-    testimonials[testimonialIndex].classList.add('active');
+  function updateTestimonial(index) {
+    testimonials.forEach(t => t.classList.remove('active'));
+    testimonials[index].classList.add('active');
   }
+
+  function showNextTestimonial() {
+    testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+    updateTestimonial(testimonialIndex);
+  }
+
+  function showPrevTestimonial() {
+    testimonialIndex = (testimonialIndex - 1 + testimonials.length) % testimonials.length;
+    updateTestimonial(testimonialIndex);
+  }
+
+  document.getElementById('nextTestimonial').addEventListener('click', showNextTestimonial);
+  document.getElementById('prevTestimonial').addEventListener('click', showPrevTestimonial);
 
   setInterval(showNextTestimonial, 5000);
 </script>
