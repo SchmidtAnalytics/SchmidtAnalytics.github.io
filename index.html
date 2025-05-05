@@ -29,7 +29,7 @@
 
     header {
       background-color: white;
-      padding: 1rem;
+      padding: 0.2rem 1rem;
       text-align: center;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
@@ -120,8 +120,9 @@
     }
 
     
+
 .cta-button {
-  background-color: var(--support); /* Groen */
+  background-color: var(--support);
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -131,6 +132,9 @@
   transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
   z-index: 999;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.4;
 }
 
 .cta-button:hover {
@@ -140,9 +144,12 @@
 
 .cta-fixed {
   position: fixed;
-  bottom: 2rem;
-  left: 2rem;
+  bottom: 1rem;
+  left: 1rem;
+  max-width: 300px;
+  width: calc(100% - 2rem);
 }
+
 
 
     footer {
@@ -253,7 +260,7 @@
   </footer>
 
   <!-- Sticky CTA knop -->
-  <button class="cta-button cta-fixed" id="openFormBtn">Vragen? We komen graag met je in contact!</button>
+  <button class="cta-button cta-fixed" id="openFormBtn">Vragen? We komen graag<br>met je in contact!</button>
 
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
