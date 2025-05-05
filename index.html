@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Schmidt Analytics</title>
+  <meta name="description" content="Schmidt Analytics helpt organisaties met data-analyse, Power BI en datagedreven strategieën.">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -37,6 +38,28 @@
       height: 60px;
     }
 
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      border-bottom: 1px solid #ccc;
+      z-index: 1000;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
     section {
       padding: 2rem 1rem;
       max-width: 1000px;
@@ -61,11 +84,16 @@
       border-radius: 30px;
       cursor: pointer;
       margin-top: 1.5rem;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .cta-button:hover {
       background-color: var(--primary);
+    }
+
+    #over-ons {
+      background-color: #f0fafa;
     }
 
     footer {
@@ -89,14 +117,26 @@
       section {
         padding: 1.5rem 1rem;
       }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="https://schmidtanalytics.github.io/Logo.png.png" alt="Schmidt Analytics logo" />
+    <img src="https://schmidtanalytics.github.io/Logo.png" alt="Schmidt Analytics logo" />
   </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#diensten">Diensten</a>
+    <a href="#over-ons">Over ons</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
   <section id="home">
     <h1>Uw partner in een datagedreven wereld</h1>
@@ -137,7 +177,3 @@
 
 </body>
 </html>
-
-
-
-
