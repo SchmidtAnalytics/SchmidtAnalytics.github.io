@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -28,11 +29,19 @@
     }
 
     header {
-      background-color: white;
-      padding: 0rem 1rem 0.1rem;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-    }
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header img {
+  height: 70px;
+}
 
     .header-container {
       display: flex;
@@ -563,6 +572,10 @@ header img {
   height: 70px;
 }
 
+header img {
+  height: 70px;
+}
+
 footer {
   background-color: #f8f8f8;
   border-top: 1px solid #ddd;
@@ -617,16 +630,22 @@ nav.scrolled {
 }
 
 
-.mobile-contact-bar {
-  display: none;
+
+
+@media (max-width: 768px) {
+  
+
+  .mobile-contact-bar a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+  }
 }
+
 
 @media (max-width: 768px) {
   .mobile-contact-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     background: var(--support);
     display: flex;
     justify-content: space-around;
@@ -645,6 +664,7 @@ nav.scrolled {
 </style>
 </head>
 <body>
+
 
   <header>
     <div class="header-container">
@@ -884,11 +904,7 @@ nav.scrolled {
 </script>
 
 
-<div class="mobile-contact-bar">
-  <a href="mailto:info@schmidt-analytics.nl">✉️ Mail ons</a>
-  <a href="tel:+31612345678">📞 Bel ons</a>
-</div>
+
 
 </body>
 </html>
-
