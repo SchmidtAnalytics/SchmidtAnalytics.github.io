@@ -322,15 +322,17 @@ form input {
   
   
   
+
 <section id="usp" class="info-block">
   <h2>Waarom kiezen voor Schmidt Analytics?</h2>
   <div class="usp-list">
-    <div class="usp-item"><span class="icon">📊</span><p><strong>Ervaren data-experts</strong><br>Meer dan 10 jaar ervaring in data-analyse, engineering en BI.</p></div>
-    <div class="usp-item"><span class="icon">⚙️</span><p><strong>Effectieve oplossingen</strong><br>Geen ingewikkelde tools, maar oplossingen die werken.</p></div>
-    <div class="usp-item"><span class="icon">💡</span><p><strong>Start bij de vraag</strong><br>Jouw behoefte is ons uitgangspunt.</p></div>
-    <div class="usp-item"><span class="icon">🤝</span><p><strong>Volledige ondersteuning</strong><br>Van strategie tot implementatie en training.</p></div>
+    <div class="usp-item"><span class="icon" style="color: var(--support);">📊</span><p><strong>Ervaren data-experts</strong><br>Meer dan 10 jaar ervaring in data-analyse, engineering en BI.</p></div>
+    <div class="usp-item"><span class="icon" style="color: var(--support);">⚙️</span><p><strong>Effectieve oplossingen</strong><br>Geen ingewikkelde tools, maar oplossingen die werken.</p></div>
+    <div class="usp-item"><span class="icon" style="color: var(--support);">💡</span><p><strong>Start bij de vraag</strong><br>Jouw behoefte is ons uitgangspunt.</p></div>
+    <div class="usp-item"><span class="icon" style="color: var(--support);">🤝</span><p><strong>Volledige ondersteuning</strong><br>Van strategie tot implementatie en training.</p></div>
   </div>
 </section>
+
 
 
 <section id="testimonials">
@@ -463,7 +465,32 @@ form input {
 </script>
 
 
+
+<script>
+  const openBtn = document.getElementById('openFormBtn');
+  const closeBtn = document.getElementById('closeFormBtn');
+  const overlay = document.getElementById('formOverlay');
+  const form = document.getElementById('contactForm');
+
+  openBtn?.addEventListener('click', () => {
+    overlay?.classList.add('active');
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    overlay?.classList.remove('active');
+  });
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const naam = form.naam.value;
+    const email = form.email.value;
+    const telefoon = form.telefoon.value;
+    const body = `Naam: ${naam}%0D%0AE-mail: ${email}%0D%0ATelefoonnummer: ${telefoon}`;
+    window.location.href = `mailto:info@schmidt-analytics.nl?subject=Contactformulier&body=${body}`;
+    overlay?.classList.remove('active');
+    form.reset();
+  });
+</script>
+
 </body>
 </html>
-
-
