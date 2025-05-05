@@ -1,910 +1,615 @@
-
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Schmidt Analytics</title>
-  <meta name="description" content="Schmidt Analytics helpt organisaties met data-analyse, Power BI en datagedreven strategieën.">
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #000099;
-      --accent: #CC0000;
-      --support: #67AB9F;
-      --bg: #F9F9F9;
-      --text: #222;
-    }
-
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Lato', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      margin: 0;
-    }
-
-    header {
-  background-color: white;
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-header img {
-  height: 70px;
-}
-
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 1rem;
-    }
-
-    .header-container img {
-      height: 80px;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      background-color: white;
-      border-bottom: 1px solid #ccc;
-      z-index: 1000;
-    }
-
-    .nav-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0.5rem 1rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: bold;
-      transition: color 0.3s ease, transform 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-      transform: scale(1.05);
-    }
-
-    .menu-toggle {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: var(--primary);
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem 0;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-    }
-
-    section {
-  width: 100%;
-  padding: 3rem 1rem;
-  max-width: 100%;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease-in-out;
-}
-
-section.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-    h1, h2 {
-      color: var(--primary);
-    }
-
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    
-
-
-.cta-button {
-  background-color: var(--support);
-  color: white;
-  border: none;
-  padding: 1.2rem 2.2rem;
-  font-size: 1.1rem;
-  border-radius: 36px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  z-index: 999;
-  text-align: center;
-  white-space: normal;
-  line-height: 1.5;
- font-weight: bold;}
-
-.cta-button:hover {
-  background-color: var(--primary);
-  transform: scale(1.05);
-}
-
-.cta-fixed {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  max-width: 340px;
-  width: calc(100% - 2rem);
-}
-
-
-
-
-    footer {
-      background-color: #eee;
-      padding: 1rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #555;
-    }
-  
-.form-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 153, 0.85);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
-
-.form-overlay.active {
-  display: flex;
-}
-
-.form-container {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 400px;
-  width: 90%;
-  position: relative;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.close-btn {
-  position: absolute;
-  top: 0.8rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--primary);
-  cursor: pointer;
-}
-
-form label {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 30px;
-  padding: 0.6rem 1rem;
-}
-
-form input {
-  border: none;
-  outline: none;
-  flex: 1;
-  font-size: 1rem;
-  padding-left: 0.5rem;
-}
-
-.icon {
-  color: var(--primary);
-  font-size: 1.2rem;
-}
-
-.privacy {
-  font-size: 0.8rem;
-  margin-top: 1rem;
-  color: #666;
-}
-
-
-.info-block {
-  background-color: #f5fdfc;
-  border-left: 5px solid var(--support);
-  margin: 2rem 0;
-  padding: 2rem 1rem;
-  border-radius: 8px;
-  animation: fadeIn 0.8s ease-in-out both;
-}
-
-.usp-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.usp-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  transform: translateY(10px);
-  opacity: 0;
-  animation: fadeSlideUp 0.6s ease forwards;
-}
-
-.usp-item:nth-child(1) { animation-delay: 0.1s; }
-.usp-item:nth-child(2) { animation-delay: 0.2s; }
-.usp-item:nth-child(3) { animation-delay: 0.3s; }
-.usp-item:nth-child(4) { animation-delay: 0.4s; }
-
-.icon {
-  font-size: 1.5rem;
-  color: var(--support);
-  flex-shrink: 0;
-}
-
-@keyframes fadeSlideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-@media (max-width: 600px) {
-  body {
-    padding-bottom: 4rem;
-  }
-
-  section {
-    padding: 2.5rem 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  h1, h2 {
-    font-size: 1.4rem;
-    line-height: 1.3;
-    text-align: center;
-  }
-
-  .cta-fixed {
-    left: 1rem;
-    right: 1rem;
-    bottom: 1rem;
-    width: auto;
-    max-width: none;
-    text-align: center;
-    font-size: 1.15rem;
-    padding: 1rem;
-    transition: opacity 0.4s ease, transform 0.3s ease;
-    border-radius: 50px;
-  }
-
-  .cta-fixed.show {
-    transform: scale(1);
-  }
-
-  .cta-fixed.hide {
-    transform: scale(0.95);
-  }
-
-  .testimonial-carousel {
-    overflow-x: hidden;
-  }
-
-  .testimonial-wrapper {
-    flex-wrap: nowrap;
-    width: 300%;
-  }
-
-  .testimonial {
-    flex: 0 0 100%;
-    max-width: 100%;
-    padding: 1.5rem 1rem;
-    box-sizing: border-box;
-    background-color: #fdfdfd;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    margin-bottom: 1rem;
-    animation: fadeInUp 0.5s ease-in-out both;
-  }
-
-  .testimonial p {
-    font-size: 1rem;
-  }
-
-  .client-info div {
-    font-size: 0.75rem;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-  .testimonial-wrapper {
-    flex-wrap: nowrap;
-    width: 300%;
-  }
-
-  .testimonial {
-    flex: 0 0 100%;
-    max-width: 100%;
-    padding: 1rem;
-    box-sizing: border-box;
-  }
-
-  .client-info div {
-    font-size: 0.75rem;
-  }
-
-  .testimonial p {
-    font-size: 1rem;
-  }
-}
-
-  .form-container {
-    width: 90%;
-    padding: 1.5rem;
-  }
-
-  .form-overlay {
-    align-items: flex-start;
-    padding-top: 4rem;
-  }
-
-  .privacy {
-    text-align: left;
-  }
-}
-
-  .form-container {
-    width: 90%;
-    padding: 1.5rem;
-  }
-
-  .form-overlay {
-    align-items: flex-start;
-    padding-top: 4rem;
-  }
-
-  .privacy {
-    text-align: left;
-  }
-}
-
-
-.testimonial-carousel {
-  overflow: hidden;
-  position: relative;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.testimonial-wrapper {
-  display: flex;
-  transition: transform 0.6s ease-in-out;
-  width: 300%;
-}
-
-.testimonial {
-  flex: 0 0 100%;
-  box-sizing: border-box;
-  padding: 1rem;
-  opacity: 1;
-  transform: none;
-  display: block;
-}
-
-@media (min-width: 768px) {
-  .testimonial-wrapper {
-    width: 300%;
-  }
-
-  .testimonial {
-    flex: 0 0 33.3333%;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .testimonial-wrapper {
-    width: 300%;
-  }
-
-  .testimonial {
-    flex: 0 0 100%;
-  }
-
-  .client-info div {
-    font-size: 0.75rem;
-  }
-
-  .testimonial p {
-    font-size: 1rem;
-  }
-}
-
-
-.cta-button {
-  transition: opacity 0.4s ease;
-}
-
-/* Fade-in animation for general sections and content */
-@keyframes fadeInUpGeneral {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUpGeneral 0.7s ease-out forwards;
-}
-
-.fade-in.delay-1 { animation-delay: 0.2s; }
-.fade-in.delay-2 { animation-delay: 0.4s; }
-.fade-in.delay-3 { animation-delay: 0.6s; }
-
-/* Layout inspired by Creative Corner */
-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 1.5rem;
-}
-
-.usp-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.usp-item {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  text-align: center;
-  flex: 1 1 260px;
-  transition: transform 0.3s ease;
-  animation: fadeInUp 0.6s ease both;
-}
-
-.usp-item:hover {
-  transform: translateY(-5px);
-}
-
-.usp-item .icon {
-  font-size: 2rem;
-  color: var(--support);
-  margin-bottom: 1rem;
-}
-
-#diensten h2, #usp h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-header {
-  background-color: white;
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-header img {
-  height: 70px;
-}
-
-header img {
-  height: 70px;
-}
-
-footer {
-  background-color: #f8f8f8;
-  border-top: 1px solid #ddd;
-  padding: 2rem 1rem;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--primary);
-  font-weight: bold;
-  padding-bottom: 4px;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  background: var(--accent);
-  left: 0;
-  bottom: 0;
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: var(--accent);
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-
-nav {
-  position: sticky;
-  top: 0;
-  background-color: white;
-  border-bottom: 1px solid #eee;
-  z-index: 1000;
-  transition: box-shadow 0.3s ease, background-color 0.3s ease;
-}
-
-nav.scrolled {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  background-color: #ffffff;
-}
-
-
-
-
-@media (max-width: 768px) {
-  
-
-  .mobile-contact-bar a {
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1rem;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .mobile-contact-bar {
-    background: var(--support);
-    display: flex;
-    justify-content: space-around;
-    padding: 0.75rem;
-    z-index: 3000;
-  }
-
-  .mobile-contact-bar a {
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1rem;
-  }
-}
-
-</style>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title> Schmidt Analytics </title>
+    <meta content="Schmidt Analytics helpt organisaties met data-analyse, Power BI en datagedreven strategieën." name="description" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <style>
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .header-container img {
+            height: 80px;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                font-size: 1.5rem;
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: var(--primary);
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .cta-button {
+                background-color: var(--support);
+                color: white;
+                border: none;
+                padding: 1.2rem 2.2rem;
+                font-size: 1.1rem;
+                border-radius: 36px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+                z-index: 999;
+                text-align: center;
+                white-space: normal;
+                line-height: 1.5;
+                font-weight: bold;
+            }
+
+            .cta-button:hover {
+                background-color: var(--primary);
+                transform: scale(1.05);
+            }
+
+            .cta-fixed {
+                position: fixed;
+                bottom: 1rem;
+                left: 1rem;
+                max-width: 340px;
+                width: calc(100% - 2rem);
+            }
+
+            .form-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 153, 0.85);
+                display: none;
+                justify-content: center;
+                align-items: center;
+                z-index: 2000;
+            }
+
+            .form-overlay.active {
+                display: flex;
+            }
+
+            .form-container {
+                background: white;
+                padding: 2rem;
+                border-radius: 12px;
+                max-width: 400px;
+                width: 90%;
+                position: relative;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+                animation: fadeIn 0.3s ease;
+            }
+
+            .close-btn {
+                position: absolute;
+                top: 0.8rem;
+                right: 1rem;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: var(--primary);
+                cursor: pointer;
+            }
+
+            .icon {
+                color: var(--primary);
+                font-size: 1.2rem;
+            }
+
+            .privacy {
+                font-size: 0.8rem;
+                margin-top: 1rem;
+                color: #666;
+            }
+
+            .info-block {
+                background-color: #f5fdfc;
+                border-left: 5px solid var(--support);
+                margin: 2rem 0;
+                padding: 2rem 1rem;
+                border-radius: 8px;
+                animation: fadeIn 0.8s ease-in-out both;
+            }
+
+            .usp-list {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .usp-item {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                transform: translateY(10px);
+                opacity: 0;
+                animation: fadeSlideUp 0.6s ease forwards;
+            }
+
+            .usp-item:nth-child(1) {
+                animation-delay: 0.1s;
+            }
+
+            .usp-item:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            .usp-item:nth-child(3) {
+                animation-delay: 0.3s;
+            }
+
+            .usp-item:nth-child(4) {
+                animation-delay: 0.4s;
+            }
+
+            .icon {
+                font-size: 1.5rem;
+                color: var(--support);
+                flex-shrink: 0;
+            }
+
+            .cta-fixed {
+                left: 1rem;
+                right: 1rem;
+                bottom: 1rem;
+                width: auto;
+                max-width: none;
+                text-align: center;
+                font-size: 1.15rem;
+                padding: 1rem;
+                transition: opacity 0.4s ease, transform 0.3s ease;
+                border-radius: 50px;
+            }
+
+            .cta-fixed.show {
+                transform: scale(1);
+            }
+
+            .cta-fixed.hide {
+                transform: scale(0.95);
+            }
+
+            .testimonial-carousel {
+                overflow-x: hidden;
+            }
+
+            .testimonial-wrapper {
+                flex-wrap: nowrap;
+                width: 300%;
+            }
+
+            .testimonial {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding: 1.5rem 1rem;
+                box-sizing: border-box;
+                background-color: #fdfdfd;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+                margin-bottom: 1rem;
+                animation: fadeInUp 0.5s ease-in-out both;
+            }
+
+            .testimonial p {
+                font-size: 1rem;
+            }
+
+            .client-info div {
+                font-size: 0.75rem;
+            }
+
+            .testimonial-wrapper {
+                flex-wrap: nowrap;
+                width: 300%;
+            }
+
+            .testimonial {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding: 1rem;
+                box-sizing: border-box;
+            }
+
+            .client-info div {
+                font-size: 0.75rem;
+            }
+
+            .testimonial p {
+                font-size: 1rem;
+            }
+
+            .form-container {
+                width: 90%;
+                padding: 1.5rem;
+            }
+
+            .form-overlay {
+                align-items: flex-start;
+                padding-top: 4rem;
+            }
+
+            .privacy {
+                text-align: left;
+            }
+
+            .form-container {
+                width: 90%;
+                padding: 1.5rem;
+            }
+
+            .form-overlay {
+                align-items: flex-start;
+                padding-top: 4rem;
+            }
+
+            .privacy {
+                text-align: left;
+            }
+
+            .testimonial-carousel {
+                overflow: hidden;
+                position: relative;
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+
+            .testimonial-wrapper {
+                display: flex;
+                transition: transform 0.6s ease-in-out;
+                width: 300%;
+            }
+
+            .testimonial {
+                flex: 0 0 100%;
+                box-sizing: border-box;
+                padding: 1rem;
+                opacity: 1;
+                transform: none;
+                display: block;
+            }
+
+            @media (min-width: 768px) {
+                .testimonial-wrapper {
+                    width: 300%;
+                }
+
+                .testimonial {
+                    flex: 0 0 33.3333%;
+                }
+
+                @media (max-width: 768px) {
+                    .testimonial-wrapper {
+                        width: 300%;
+                    }
+
+                    .testimonial {
+                        flex: 0 0 100%;
+                    }
+
+                    .client-info div {
+                        font-size: 0.75rem;
+                    }
+
+                    .testimonial p {
+                        font-size: 1rem;
+                    }
+
+                    .cta-button {
+                        transition: opacity 0.4s ease;
+                    }
+
+                    .fade-in {
+                        opacity: 0;
+                        transform: translateY(20px);
+                        animation: fadeInUpGeneral 0.7s ease-out forwards;
+                    }
+
+                    .fade-in.delay-1 {
+                        animation-delay: 0.2s;
+                    }
+
+                    .fade-in.delay-2 {
+                        animation-delay: 0.4s;
+                    }
+
+                    .fade-in.delay-3 {
+                        animation-delay: 0.6s;
+                    }
+
+                    .usp-list {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 2rem;
+                        justify-content: center;
+                    }
+
+                    .usp-item {
+                        background: #ffffff;
+                        border: 1px solid #e0e0e0;
+                        border-radius: 12px;
+                        padding: 2rem;
+                        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+                        text-align: center;
+                        flex: 1 1 260px;
+                        transition: transform 0.3s ease;
+                        animation: fadeInUp 0.6s ease both;
+                    }
+
+                    .usp-item:hover {
+                        transform: translateY(-5px);
+                    }
+
+                    .usp-item .icon {
+                        font-size: 2rem;
+                        color: var(--support);
+                        margin-bottom: 1rem;
+                    }
+
+                    #diensten h2,
+                    #usp h2 {
+                        text-align: center;
+                        margin-bottom: 2rem;
+                    }
+
+                    .nav-links a {
+                        text-decoration: none;
+                        color: var(--primary);
+                        font-weight: bold;
+                        padding-bottom: 4px;
+                        position: relative;
+                        transition: color 0.3s ease;
+                    }
+
+                    .nav-links a::after {
+                        content: "";
+                        position: absolute;
+                        width: 0%;
+                        height: 2px;
+                        background: var(--accent);
+                        left: 0;
+                        bottom: 0;
+                        transition: width 0.3s ease;
+                    }
+
+                    .nav-links a:hover {
+                        color: var(--accent);
+                    }
+
+                    .nav-links a:hover::after {
+                        width: 100%;
+                    }
+    </style>
 </head>
+
 <body>
-
-
-  <header>
-    <div class="header-container">
-      <img loading="lazy" src="https://schmidtanalytics.github.io/Logo.png" alt="Schmidt Analytics logo" />
-      <button class="menu-toggle" aria-label="Menu openen/sluiten" aria-expanded="false">&#9776;</button>
+    <header>
+        <div class="header-container"> <img alt="Schmidt Analytics logo" loading="lazy" src="https://schmidtanalytics.github.io/Logo.png" /> <button aria-expanded="false" aria-label="Menu openen/sluiten" class="menu-toggle"> ☰ </button> </div>
+    </header>
+    <nav role="navigation">
+        <div class="nav-container">
+            <div class="nav-links" id="navLinks"> <a href="#home"> Home </a> <a href="#diensten"> Diensten </a> <a href="#over-ons"> Over ons </a> <a href="#contact"> Contact </a> </div>
+        </div>
+    </nav>
+    <section class="fade-in delay-1" id="home">
+        <h1> Uw partner in een datagedreven wereld </h1>
+        <p> Schmidt Analytics is gespecialiseerd in data-analyse, data engineering, Power BI-ontwikkeling en advies. Wij bouwen oplossingen vanuit de vraag – niet vanuit de techniek. </p>
+    </section>
+    <section class="info-block" id="diensten">
+        <h2> Diensten </h2>
+        <div class="usp-list">
+            <div class="usp-item"> <span class="icon"> 📈 </span>
+                <p> <strong> Data-analyse </strong> <br /> Inzichten uit data halen om beter te sturen. </p>
+            </div>
+            <div class="usp-item"> <span class="icon"> 🧱 </span>
+                <p> <strong> Data-engineering </strong> <br /> Betrouwbare infrastructuur en dataverwerking opzetten. </p>
+            </div>
+            <div class="usp-item"> <span class="icon"> 📊 </span>
+                <p> <strong> Power BI-ontwikkeling </strong> <br /> Dashboards en rapportages op maat. </p>
+            </div>
+            <div class="usp-item"> <span class="icon"> ☁️ </span>
+                <p> <strong> Microsoft Fabric </strong> <br /> Moderne, schaalbare dataplatformoplossingen. </p>
+            </div>
+            <div class="usp-item"> <span class="icon"> 🧭 </span>
+                <p> <strong> Advies &amp; Strategie </strong> <br /> Begeleiding naar een datagedreven organisatie. </p>
+            </div>
+        </div>
+    </section>
+    <section class="info-block" id="usp">
+        <h2> Waarom kiezen voor Schmidt Analytics? </h2>
+        <div class="usp-list">
+            <div class="usp-item"> <span class="icon" style="color: var(--support);"> 📊 </span>
+                <p> <strong> Ervaren data-experts </strong> <br /> Meer dan 10 jaar ervaring in data-analyse, engineering en BI. </p>
+            </div>
+            <div class="usp-item"> <span class="icon" style="color: var(--support);"> ⚙️ </span>
+                <p> <strong> Effectieve oplossingen </strong> <br /> Geen ingewikkelde tools, maar oplossingen die werken. </p>
+            </div>
+            <div class="usp-item"> <span class="icon" style="color: var(--support);"> 💡 </span>
+                <p> <strong> Start bij de vraag </strong> <br /> Jouw behoefte is ons uitgangspunt. </p>
+            </div>
+            <div class="usp-item"> <span class="icon" style="color: var(--support);"> 🤝 </span>
+                <p> <strong> Volledige ondersteuning </strong> <br /> Van strategie tot implementatie en training. </p>
+            </div>
+        </div>
+    </section>
+    <section class="fade-in delay-1" id="testimonials">
+        <h2> Wat onze partners zeggen </h2>
+        <div class="testimonial-carousel" id="testimonialCarousel">
+            <div class="testimonial-wrapper" id="testimonialWrapper">
+                <div class="testimonial">
+                    <p> “Schmidt Analytics hielp ons om onze data écht strategisch in te zetten.” </p>
+                    <div class="client-info"> <img alt="Bedrijfslogo A" loading="lazy" src="https://via.placeholder.com/60" />
+                        <div> <strong> J. de Vries </strong> <br /> <span> Data Manager, Bedrijf A </span> </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p> “Heldere dashboards, snelle levering, en altijd gericht op de vraag.” </p>
+                    <div class="client-info"> <img alt="Bedrijfslogo B" loading="lazy" src="https://via.placeholder.com/60" />
+                        <div> <strong> M. Janssen </strong> <br /> <span> Operations, Bedrijf B </span> </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p> “Door hun ondersteuning zijn we veel efficiënter gaan rapporteren.” </p>
+                    <div class="client-info"> <img alt="Bedrijfslogo C" loading="lazy" src="https://via.placeholder.com/60" />
+                        <div> <strong> A. Willems </strong> <br /> <span> Directeur, Bedrijf C </span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="fade-in delay-2" id="over-ons">
+        <h2> Over ons </h2>
+        <p> <strong> Wij geloven dat elke organisatie beter presteert met goed georganiseerde data. </strong> <br /> <br /> Wij zijn een team van data-experts met passie voor eenvoud en effectiviteit. Onze aanpak is pragmatisch: we beginnen bij uw vraag en bouwen van daaruit een passende oplossing. Ons doel is om organisaties écht datagedreven te laten werken. </p>
+    </section>
+    <section class="fade-in delay-3" id="contact">
+        <h2> Contact </h2>
+        <p> Interesse in een samenwerking of vrijblijvend advies? Stuur ons een bericht via <a href="mailto:info@schmidt-analytics.nl"> info@schmidt-analytics.nl </a> . </p>
+    </section>
+    <footer> © 2025 Schmidt Analytics B.V. </footer> <!-- Sticky CTA knop --> <button class="cta-button cta-fixed" id="openFormBtn"> Vragen? We komen graag <br /> met je in contact! </button>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+        });
+    </script> <!-- CTA knop --> <button class="cta-button cta-fixed" id="openFormBtn"> Vragen? We komen graag <br /> met je in contact! </button> <!-- Popup formulier -->
+    <div class="form-overlay" id="formOverlay">
+        <div class="form-container"> <button class="close-btn" id="closeFormBtn"> × </button>
+            <h2> Neem contact op </h2>
+            <form id="contactForm"> <label> <span class="icon"> 👤 </span> <input name="naam" placeholder="Naam" required="" type="text" /> </label> <label> <span class="icon"> 📧 </span> <input name="email" placeholder="E-mailadres" required="" type="email" /> </label> <label> <span class="icon"> 📞 </span> <input name="telefoon" placeholder="Telefoonnummer" required="" type="tel" /> </label> <button class="cta-button" type="submit"> Verstuur </button>
+                <p class="privacy"> Met het opsturen van dit formulier geeft u Schmidt Analytics B.V. toestemming om deze gegevens te verwerken voor het opnemen van contact. De gegevens worden hierna verwijderd. </p>
+            </form>
+        </div>
     </div>
-  </header>
+    <script>
+        const openBtn = document.getElementById('openFormBtn');
+        const closeBtn = document.getElementById('closeFormBtn');
+        const overlay = document.getElementById('formOverlay');
+        const form = document.getElementById('contactForm');
+        openBtn.addEventListener('click', () => {
+            overlay.classList.add('active');
+        });
+        closeBtn.addEventListener('click', () => {
+            overlay.classList.remove('active');
+        });
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const naam = form.naam.value;
+            const email = form.email.value;
+            const telefoon = form.telefoon.value;
+            const body = `Naam: ${naam}%0D%0AE-mail: ${email}%0D%0ATelefoonnummer: ${telefoon}`;
+            window.location.href = `mailto:info@schmidt-analytics.nl?subject=Contactformulier&body=${body}`;
+            overlay.classList.remove('active');
+            form.reset();
+        });
+    </script>
+    <script>
+        const openBtn = document.getElementById('openFormBtn');
+        const closeBtn = document.getElementById('closeFormBtn');
+        const overlay = document.getElementById('formOverlay');
+        const form = document.getElementById('contactForm');
+        openBtn?.addEventListener('click', () => {
+            overlay?.classList.add('active');
+        });
+        closeBtn?.addEventListener('click', () => {
+            overlay?.classList.remove('active');
+        });
+        form?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const naam = form.naam.value;
+            const email = form.email.value;
+            const telefoon = form.telefoon.value;
+            const body = `Naam: ${naam}%0D%0AE-mail: ${email}%0D%0ATelefoonnummer: ${telefoon}`;
+            window.location.href = `mailto:info@schmidt-analytics.nl?subject=Contactformulier&body=${body}`;
+            overlay?.classList.remove('active');
+            form.reset();
+        });
+    </script>
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <script>
+        const ctaBtn = document.getElementById('openFormBtn');
+        let hideTimeout;
 
-  <nav role="navigation">
-    <div class="nav-container">
-      <div class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#diensten">Diensten</a>
-        <a href="#over-ons">Over ons</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <section class="fade-in delay-1" id="home">
-    <h1>Uw partner in een datagedreven wereld</h1>
-    <p>
-      Schmidt Analytics is gespecialiseerd in data-analyse, data engineering, Power BI-ontwikkeling en advies. Wij bouwen oplossingen vanuit de vraag – niet vanuit de techniek.
-    </p>
-  </section>
-
-  
-<section class="fade-in delay-2" id="diensten" class="info-block">
-  <h2>Diensten</h2>
-  <div class="usp-list">
-    <div class="usp-item"><span class="icon">📈</span><p><strong>Data-analyse</strong><br>Inzichten uit data halen om beter te sturen.</p></div>
-    <div class="usp-item"><span class="icon">🧱</span><p><strong>Data-engineering</strong><br>Betrouwbare infrastructuur en dataverwerking opzetten.</p></div>
-    <div class="usp-item"><span class="icon">📊</span><p><strong>Power BI-ontwikkeling</strong><br>Dashboards en rapportages op maat.</p></div>
-    <div class="usp-item"><span class="icon">☁️</span><p><strong>Microsoft Fabric</strong><br>Moderne, schaalbare dataplatformoplossingen.</p></div>
-    <div class="usp-item"><span class="icon">🧭</span><p><strong>Advies & Strategie</strong><br>Begeleiding naar een datagedreven organisatie.</p></div>
-  </div>
-</section>
-
-
-  
-  
-  
-
-<section class="fade-in delay-3" id="usp" class="info-block">
-  <h2>Waarom kiezen voor Schmidt Analytics?</h2>
-  <div class="usp-list">
-    <div class="usp-item"><span class="icon" style="color: var(--support);">📊</span><p><strong>Ervaren data-experts</strong><br>Meer dan 10 jaar ervaring in data-analyse, engineering en BI.</p></div>
-    <div class="usp-item"><span class="icon" style="color: var(--support);">⚙️</span><p><strong>Effectieve oplossingen</strong><br>Geen ingewikkelde tools, maar oplossingen die werken.</p></div>
-    <div class="usp-item"><span class="icon" style="color: var(--support);">💡</span><p><strong>Start bij de vraag</strong><br>Jouw behoefte is ons uitgangspunt.</p></div>
-    <div class="usp-item"><span class="icon" style="color: var(--support);">🤝</span><p><strong>Volledige ondersteuning</strong><br>Van strategie tot implementatie en training.</p></div>
-  </div>
-</section>
-
-
-
-<section class="fade-in delay-1" id="testimonials">
-    <h2>Wat onze partners zeggen</h2>
-    
-<div class="testimonial-carousel" id="testimonialCarousel">
-  <div class="testimonial-wrapper" id="testimonialWrapper">
-    <div class="testimonial"><p>“Schmidt Analytics hielp ons om onze data écht strategisch in te zetten.”</p><div class="client-info"><img loading="lazy" src="https://via.placeholder.com/60" alt="Bedrijfslogo A" /><div><strong>J. de Vries</strong><br /><span>Data Manager, Bedrijf A</span></div></div></div>
-    <div class="testimonial"><p>“Heldere dashboards, snelle levering, en altijd gericht op de vraag.”</p><div class="client-info"><img loading="lazy" src="https://via.placeholder.com/60" alt="Bedrijfslogo B" /><div><strong>M. Janssen</strong><br /><span>Operations, Bedrijf B</span></div></div></div>
-    <div class="testimonial"><p>“Door hun ondersteuning zijn we veel efficiënter gaan rapporteren.”</p><div class="client-info"><img loading="lazy" src="https://via.placeholder.com/60" alt="Bedrijfslogo C" /><div><strong>A. Willems</strong><br /><span>Directeur, Bedrijf C</span></div></div></div>
-  </div>
-  
-    </div>
-  </section>
-<section class="fade-in delay-2" id="over-ons">
-    <h2>Over ons</h2>
-    <p><strong>Wij geloven dat elke organisatie beter presteert met goed georganiseerde data.</strong><br><br>
-      Wij zijn een team van data-experts met passie voor eenvoud en effectiviteit. Onze aanpak is pragmatisch: we beginnen bij uw vraag en bouwen van daaruit een passende oplossing. Ons doel is om organisaties écht datagedreven te laten werken.
-    </p>
-  </section>
-
-  
-  
-
-  <section class="fade-in delay-3" id="contact">
-    <h2>Contact</h2>
-    <p>
-      Interesse in een samenwerking of vrijblijvend advies? Stuur ons een bericht via <a href="mailto:info@schmidt-analytics.nl">info@schmidt-analytics.nl</a>.
-    </p>
-  </section>
-
-  <footer>
-    &copy; 2025 Schmidt Analytics B.V.
-  </footer>
-
-  <!-- Sticky CTA knop -->
-  <button class="cta-button cta-fixed" id="openFormBtn">Vragen? We komen graag<br>met je in contact!</button>
-
-  <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.getElementById('navLinks');
-
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      menuToggle.setAttribute('aria-expanded', navLinks.classList.contains('active'));
-    });
-  </script>
-
-
-<!-- CTA knop -->
-<button class="cta-button cta-fixed" id="openFormBtn">Vragen? We komen graag<br>met je in contact!</button>
-
-<!-- Popup formulier -->
-<div class="form-overlay" id="formOverlay">
-  <div class="form-container">
-    <button class="close-btn" id="closeFormBtn">&times;</button>
-    <h2>Neem contact op</h2>
-    <form id="contactForm">
-      <label>
-        <span class="icon">👤</span>
-        <input type="text" name="naam" placeholder="Naam" required />
-      </label>
-      <label>
-        <span class="icon">📧</span>
-        <input type="email" name="email" placeholder="E-mailadres" required />
-      </label>
-      <label>
-        <span class="icon">📞</span>
-        <input type="tel" name="telefoon" placeholder="Telefoonnummer" required />
-      </label>
-      <button type="submit" class="cta-button">Verstuur</button>
-      <p class="privacy">Met het opsturen van dit formulier geeft u Schmidt Analytics B.V. toestemming om deze gegevens te verwerken voor het opnemen van contact. De gegevens worden hierna verwijderd.</p>
-    </form>
-  </div>
-</div>
-
-
-
-<script>
-  const openBtn = document.getElementById('openFormBtn');
-  const closeBtn = document.getElementById('closeFormBtn');
-  const overlay = document.getElementById('formOverlay');
-  const form = document.getElementById('contactForm');
-
-  openBtn.addEventListener('click', () => {
-    overlay.classList.add('active');
-  });
-
-  closeBtn.addEventListener('click', () => {
-    overlay.classList.remove('active');
-  });
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const naam = form.naam.value;
-    const email = form.email.value;
-    const telefoon = form.telefoon.value;
-    const body = `Naam: ${naam}%0D%0AE-mail: ${email}%0D%0ATelefoonnummer: ${telefoon}`;
-    window.location.href = `mailto:info@schmidt-analytics.nl?subject=Contactformulier&body=${body}`;
-    overlay.classList.remove('active');
-    form.reset();
-  });
-</script>
-
-
-
-<script>
-  const openBtn = document.getElementById('openFormBtn');
-  const closeBtn = document.getElementById('closeFormBtn');
-  const overlay = document.getElementById('formOverlay');
-  const form = document.getElementById('contactForm');
-
-  openBtn?.addEventListener('click', () => {
-    overlay?.classList.add('active');
-  });
-
-  closeBtn?.addEventListener('click', () => {
-    overlay?.classList.remove('active');
-  });
-
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const naam = form.naam.value;
-    const email = form.email.value;
-    const telefoon = form.telefoon.value;
-    const body = `Naam: ${naam}%0D%0AE-mail: ${email}%0D%0ATelefoonnummer: ${telefoon}`;
-    window.location.href = `mailto:info@schmidt-analytics.nl?subject=Contactformulier&body=${body}`;
-    overlay?.classList.remove('active');
-    form.reset();
-  });
-</script>
-
-
-<script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-  });
-</script>
-
-
-<script>
-  const ctaBtn = document.getElementById('openFormBtn');
-  let hideTimeout;
-
-  function resetInactivityTimer() {
-    clearTimeout(hideTimeout);
-    ctaBtn.style.opacity = '1';
-    ctaBtn.style.pointerEvents = 'auto';
-
-    hideTimeout = setTimeout(() => {
-      ctaBtn.style.opacity = '0';
-      ctaBtn.style.pointerEvents = 'none';
-    }, 5000);
-  }
-
-  ['mousemove', 'keydown', 'scroll', 'click', 'touchstart'].forEach(evt =>
-    window.addEventListener(evt, resetInactivityTimer)
-  );
-
-  window.addEventListener('load', resetInactivityTimer);
-</script>
-
-
-<script>
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  });
-</script>
-
-
-
-
+        function resetInactivityTimer() {
+            clearTimeout(hideTimeout);
+            ctaBtn.style.opacity = '1';
+            ctaBtn.style.pointerEvents = 'auto';
+            hideTimeout = setTimeout(() => {
+                ctaBtn.style.opacity = '0';
+                ctaBtn.style.pointerEvents = 'none';
+            }, 5000);
+        } ['mousemove', 'keydown', 'scroll', 'click', 'touchstart'].forEach(evt => window.addEventListener(evt, resetInactivityTimer));
+        window.addEventListener('load', resetInactivityTimer);
+    </script>
+    <script>
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
-</html>
