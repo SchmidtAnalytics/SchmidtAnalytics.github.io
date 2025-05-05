@@ -136,7 +136,7 @@
   text-align: center;
   white-space: normal;
   line-height: 1.5;
-}
+ font-weight: bold;}
 
 .cta-button:hover {
   background-color: var(--primary);
@@ -376,6 +376,7 @@ form input {
 </div>
 
 
+
 <script>
   const openBtn = document.getElementById('openFormBtn');
   const closeBtn = document.getElementById('closeFormBtn');
@@ -392,14 +393,20 @@ form input {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    alert('Uw gegevens zijn verzonden. We nemen spoedig contact op.');
+    const naam = form.naam.value;
+    const email = form.email.value;
+    const telefoon = form.telefoon.value;
+    const body = `Naam: ${naam}%0D%0AE-mail: ${email}%0D%0ATelefoonnummer: ${telefoon}`;
+    window.location.href = `mailto:info@schmidt-analytics.nl?subject=Contactformulier&body=${body}`;
     overlay.classList.remove('active');
     form.reset();
   });
 </script>
 
+
 </body>
 </html>
+
 
 
 
