@@ -242,6 +242,65 @@
       margin-top: 1rem;
       color: #666;
     }
+
+#testimonials {
+  background-color: #fff;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.testimonial-carousel {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 160px;
+}
+
+.testimonial {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.testimonial.active {
+  display: block;
+  opacity: 1;
+}
+
+.testimonial p {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.client-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.client-info img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 2px solid var(--support);
+  background: white;
+}
+
+.client-info div {
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.client-info strong {
+  color: var(--text);
+}
+
   </style>
 </head>
 <body>
@@ -286,6 +345,46 @@
       Wij zijn een team van data-experts met passie voor eenvoud en effectiviteit. Onze aanpak is pragmatisch: we beginnen bij uw vraag en bouwen van daaruit een passende oplossing. Ons doel is om organisaties écht datagedreven te laten werken.
     </p>
   </section>
+
+<section id="testimonials">
+  <h2>Wat zeggen onze klanten?</h2>
+  <div class="testimonial-carousel" id="testimonialCarousel">
+
+    <div class="testimonial active">
+      <p>“Schmidt Analytics hielp ons om onze data écht strategisch in te zetten.”</p>
+      <div class="client-info">
+        <img src="https://via.placeholder.com/60" alt="Bedrijfslogo A" />
+        <div>
+          <strong>J. de Vries</strong><br />
+          <span>Data Manager, Bedrijf A</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <p>“Heldere dashboards, snelle levering, en altijd gericht op de vraag.”</p>
+      <div class="client-info">
+        <img src="https://via.placeholder.com/60" alt="Bedrijfslogo B" />
+        <div>
+          <strong>M. Janssen</strong><br />
+          <span>Operations, Bedrijf B</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <p>“Door hun ondersteuning zijn we veel efficiënter gaan rapporteren.”</p>
+      <div class="client-info">
+        <img src="https://via.placeholder.com/60" alt="Bedrijfslogo C" />
+        <div>
+          <strong>A. Willems</strong><br />
+          <span>Directeur, Bedrijf C</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <section id="contact">
     <h2>Contact</h2>
@@ -356,6 +455,18 @@
       window.location.href = `mailto:info@schmidt-analytics.nl?subject=Contactformulier&body=${mailBody}`;
     });
   </script>
+<script>
+  const testimonials = document.querySelectorAll('.testimonial');
+  let testimonialIndex = 0;
+
+  function showNextTestimonial() {
+    testimonials[testimonialIndex].classList.remove('active');
+    testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+    testimonials[testimonialIndex].classList.add('active');
+  }
+
+  setInterval(showNextTestimonial, 5000);
+</script>
 
 </body>
 </html>
