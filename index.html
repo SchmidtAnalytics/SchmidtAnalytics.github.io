@@ -305,6 +305,39 @@ form input {
   }
 }
 
+
+.testimonial-carousel {
+  overflow: hidden;
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testimonial-wrapper {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  width: 300%;
+}
+
+.testimonial {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+  opacity: 1;
+  transform: none;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .testimonial-wrapper {
+    width: 300%;
+  }
+
+  .testimonial {
+    flex: 0 0 33.3333%;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -365,41 +398,14 @@ form input {
 
 <section id="testimonials">
     <h2>Wat onze partners zeggen</h2>
-    <div class="testimonial-carousel" id="testimonialCarousel">
-      <div class="testimonial active">
-        <p>“Schmidt Analytics hielp ons om onze data écht strategisch in te zetten.”</p>
-        <div class="client-info">
-          <img src="https://via.placeholder.com/60" alt="Bedrijfslogo A" />
-          <div>
-            <strong>J. de Vries</strong><br />
-            <span>Data Manager, Bedrijf A</span>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial">
-        <p>“Heldere dashboards, snelle levering, en altijd gericht op de vraag.”</p>
-        <div class="client-info">
-          <img src="https://via.placeholder.com/60" alt="Bedrijfslogo B" />
-          <div>
-            <strong>M. Janssen</strong><br />
-            <span>Operations, Bedrijf B</span>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial">
-        <p>“Door hun ondersteuning zijn we veel efficiënter gaan rapporteren.”</p>
-        <div class="client-info">
-          <img src="https://via.placeholder.com/60" alt="Bedrijfslogo C" />
-          <div>
-            <strong>A. Willems</strong><br />
-            <span>Directeur, Bedrijf C</span>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-controls">
-        <button id="prevTestimonial" aria-label="Vorige testimonial">&#8592;</button>
-        <button id="nextTestimonial" aria-label="Volgende testimonial">&#8594;</button>
-      </div>
+    
+<div class="testimonial-carousel" id="testimonialCarousel">
+  <div class="testimonial-wrapper" id="testimonialWrapper">
+    <div class="testimonial"><p>“Schmidt Analytics hielp ons om onze data écht strategisch in te zetten.”</p><div class="client-info"><img src="https://via.placeholder.com/60" alt="Bedrijfslogo A" /><div><strong>J. de Vries</strong><br /><span>Data Manager, Bedrijf A</span></div></div></div>
+    <div class="testimonial"><p>“Heldere dashboards, snelle levering, en altijd gericht op de vraag.”</p><div class="client-info"><img src="https://via.placeholder.com/60" alt="Bedrijfslogo B" /><div><strong>M. Janssen</strong><br /><span>Operations, Bedrijf B</span></div></div></div>
+    <div class="testimonial"><p>“Door hun ondersteuning zijn we veel efficiënter gaan rapporteren.”</p><div class="client-info"><img src="https://via.placeholder.com/60" alt="Bedrijfslogo C" /><div><strong>A. Willems</strong><br /><span>Directeur, Bedrijf C</span></div></div></div>
+  </div>
+  
     </div>
   </section>
 <section id="over-ons">
@@ -522,3 +528,4 @@ form input {
 
 </body>
 </html>
+
