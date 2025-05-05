@@ -234,6 +234,49 @@ form input {
   color: #666;
 }
 
+
+.info-block {
+  background-color: #f5fdfc;
+  border-left: 5px solid var(--support);
+  margin: 2rem 0;
+  padding: 2rem 1rem;
+  border-radius: 8px;
+  animation: fadeIn 0.8s ease-in-out both;
+}
+
+.usp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.usp-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transform: translateY(10px);
+  opacity: 0;
+  animation: fadeSlideUp 0.6s ease forwards;
+}
+
+.usp-item:nth-child(1) { animation-delay: 0.1s; }
+.usp-item:nth-child(2) { animation-delay: 0.2s; }
+.usp-item:nth-child(3) { animation-delay: 0.3s; }
+.usp-item:nth-child(4) { animation-delay: 0.4s; }
+
+.icon {
+  font-size: 1.5rem;
+  color: var(--support);
+  flex-shrink: 0;
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -263,28 +306,32 @@ form input {
     </p>
   </section>
 
-  <section id="diensten">
-    <h2>Diensten</h2>
-    <ul>
-      <li><strong>Data-analyse</strong>: inzichten uit data halen om beter te sturen.</li>
-      <li><strong>Data-engineering</strong>: betrouwbare infrastructuur en dataverwerking opzetten.</li>
-      <li><strong>Power BI-ontwikkeling</strong>: dashboards en rapportages op maat.</li>
-      <li><strong>Microsoft Fabric</strong>: moderne, schaalbare dataplatformoplossingen.</li>
-      <li><strong>Advies & Strategie</strong>: begeleiding naar een datagedreven organisatie.</li>
-    </ul>
-  </section>
+  
+<section id="diensten" class="info-block">
+  <h2>Diensten</h2>
+  <div class="usp-list">
+    <div class="usp-item"><span class="icon">📈</span><p><strong>Data-analyse</strong><br>Inzichten uit data halen om beter te sturen.</p></div>
+    <div class="usp-item"><span class="icon">🧱</span><p><strong>Data-engineering</strong><br>Betrouwbare infrastructuur en dataverwerking opzetten.</p></div>
+    <div class="usp-item"><span class="icon">📊</span><p><strong>Power BI-ontwikkeling</strong><br>Dashboards en rapportages op maat.</p></div>
+    <div class="usp-item"><span class="icon">☁️</span><p><strong>Microsoft Fabric</strong><br>Moderne, schaalbare dataplatformoplossingen.</p></div>
+    <div class="usp-item"><span class="icon">🧭</span><p><strong>Advies & Strategie</strong><br>Begeleiding naar een datagedreven organisatie.</p></div>
+  </div>
+</section>
+
 
   
   
-  <section id="usp">
-    <h2>Waarom kiezen voor Schmidt Analytics?</h2>
-    <ul>
-      <li><strong>✔ Ervaren data-experts</strong>: Meer dan 10 jaar ervaring in data-analyse, engineering en BI.</li>
-      <li><strong>✔ Gericht op eenvoud en effectiviteit</strong>: Geen ingewikkelde tools, maar oplossingen die werken.</li>
-      <li><strong>✔ We starten bij de vraag, niet de techniek</strong>: Jouw behoefte is ons uitgangspunt.</li>
-      <li><strong>✔ Volledige ondersteuning</strong>: Van strategie tot implementatie en training.</li>
-    </ul>
-  </section>
+  
+<section id="usp" class="info-block">
+  <h2>Waarom kiezen voor Schmidt Analytics?</h2>
+  <div class="usp-list">
+    <div class="usp-item"><span class="icon">📊</span><p><strong>Ervaren data-experts</strong><br>Meer dan 10 jaar ervaring in data-analyse, engineering en BI.</p></div>
+    <div class="usp-item"><span class="icon">⚙️</span><p><strong>Effectieve oplossingen</strong><br>Geen ingewikkelde tools, maar oplossingen die werken.</p></div>
+    <div class="usp-item"><span class="icon">💡</span><p><strong>Start bij de vraag</strong><br>Jouw behoefte is ons uitgangspunt.</p></div>
+    <div class="usp-item"><span class="icon">🤝</span><p><strong>Volledige ondersteuning</strong><br>Van strategie tot implementatie en training.</p></div>
+  </div>
+</section>
+
 
 <section id="testimonials">
     <h2>Wat onze partners zeggen</h2>
@@ -418,3 +465,4 @@ form input {
 
 </body>
 </html>
+
